@@ -79,11 +79,11 @@ ${rec.features.map(f => `• ${f.label}: ${f.detail}`).join('\n')}
 
 BUDGET ESTIMATE
 ---------------
-Camera Equipment: $${rec.budget.cameras}
-System (DVR/NVR): $${rec.budget.system}
-Storage: $${rec.budget.storage}
-Installation: $${rec.budget.installation}
-TOTAL RANGE: $${rec.budget.low} – $${rec.budget.high}
+Camera Equipment: KES ${rec.budget.cameras.toLocaleString()}
+System (DVR/NVR): KES ${rec.budget.system.toLocaleString()}
+Storage: KES ${rec.budget.storage.toLocaleString()}
+Installation: KES ${rec.budget.installation.toLocaleString()}
+TOTAL RANGE: KES ${rec.budget.low.toLocaleString()} – KES ${rec.budget.high.toLocaleString()}
 
 CAMERA PLACEMENT
 ----------------
@@ -150,7 +150,7 @@ Advisory only. Consult a certified installer before purchasing.
           <StatCard icon={<FiCamera />} label="Total Cameras" value={rec.cameraCount} sub={`${rec.indoorCount} in · ${rec.outdoorCount} out`} color="cyan" delay={0} />
           <StatCard icon={<MdOutlineSecurity />} label="System Type" value={rec.systemType} sub={rec.wiredOrWireless} color="blue" delay={1} />
           <StatCard icon={<FiHardDrive />} label="Storage" value={rec.storage.split(' ')[0]} sub={rec.storage.split(' ').slice(1).join(' ')} color="purple" delay={2} />
-          <StatCard icon={<FiShield />} label="Budget Range" value={`$${rec.budget.low}`} sub={`up to $${rec.budget.high}`} color="emerald" delay={3} />
+          <StatCard icon={<FiShield />} label="Budget Range" value={`KES ${rec.budget.low.toLocaleString()}`} sub={`up to KES ${rec.budget.high.toLocaleString()}`} color="emerald" delay={3} />
         </div>
 
         {/* Main grid */}
@@ -251,7 +251,7 @@ Advisory only. Consult a certified installer before purchasing.
           <motion.div custom={8} variants={fadeUp} initial="hidden" animate="visible">
             <div className="glass-card p-6 h-full">
               <h3 className="font-body font-semibold text-white mb-4 flex items-center gap-2">
-                <span className="text-neon-cyan">$</span> Budget Breakdown
+                <span className="text-neon-cyan font-mono text-sm">KES</span> Budget Breakdown
               </h3>
               <div className="space-y-3">
                 {[
@@ -262,13 +262,13 @@ Advisory only. Consult a certified installer before purchasing.
                 ].map(item => (
                   <div key={item.label} className="flex items-center justify-between py-2 border-b border-white/5 last:border-0">
                     <span className="text-sm text-slate-300 font-body">{item.label}</span>
-                    <span className="font-mono text-sm text-slate-200">${item.value}</span>
+                    <span className="font-mono text-sm text-slate-200">KES {item.value.toLocaleString()}</span>
                   </div>
                 ))}
                 <div className="flex items-center justify-between pt-3 mt-1">
                   <span className="font-body font-semibold text-white">Estimated Total</span>
                   <div className="text-right">
-                    <div className="font-display font-bold text-neon-cyan text-lg">${rec.budget.low} – ${rec.budget.high}</div>
+                    <div className="font-display font-bold text-neon-cyan text-lg">KES {rec.budget.low.toLocaleString()} – KES {rec.budget.high.toLocaleString()}</div>
                     <div className="text-xs text-slate-500 font-mono">including installation</div>
                   </div>
                 </div>
